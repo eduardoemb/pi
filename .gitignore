@@ -1,0 +1,15 @@
+.atl/
+.opencode/
+.pi/
+__pycache__/
+*.py[cod]
+*.bak
+*.cache
+*.log
+.env
+.env.*
+!.env.example
+credentials/
+oauth/
+sessions/
+backups/
