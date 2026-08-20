@@ -1,0 +1,24 @@
+name: Validate pull request
+on:
+  pull_request:
+jobs:
+  issue-and-type:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const p = context.payload.pull_request;
+            const labels = p.labels.map(x => x.name).filter(x => x.startsWith('type:'));
+            if (labels.length !== 1) core.setFailed('exactly one type:* label is required');
+            const match = (p.body || '').match(/(?:Closes|Fixes|Resolves) #(\d+)/i);
+            if (!match) core.setFailed('approved issue link is required');
+            else {
+              const issue = await github.rest.issues.get({owner: context.repo.owner, repo: context.repo.repo, issue_number: match[1]});
+              if (!issue.data.labels.some(x => x.name === 'status:approved')) core.setFailed('linked issue is not approved');
+            }
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: shellcheck bootstrap/install.sh checks/*.sh

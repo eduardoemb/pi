@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "context7": {"credentialRef": "env:CONTEXT7_API_KEY"},
+    "freecad": {"credentialRef": "env:FREECAD_MCP_URL"},
+    "gmail_emb": {"credentialRef": "env:GMAIL_EMB_CREDENTIAL"},
+    "gmail_personal": {"credentialRef": "env:GMAIL_PERSONAL_CREDENTIAL"},
+    "gmail_zeler": {"credentialRef": "env:GMAIL_ZELER_CREDENTIAL"}
+  }
+}
