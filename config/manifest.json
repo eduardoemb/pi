@@ -2,13 +2,14 @@
   "version": 1,
   "ownership": {
     "package": ["generated Pi assets", "mcpServers.engram"],
-    "user": ["defaultProjectTrust", "enableInstallTelemetry", "five declared MCP entries"]
+    "user": ["defaultProvider", "defaultModel", "defaultProjectTrust", "enableInstallTelemetry", "five declared MCP entries"]
   },
   "allowlist": [
     ".gitignore", ".github/PULL_REQUEST_TEMPLATE.md", ".github/workflows/validate.yml",
-    "bootstrap/install.sh", "bootstrap/sync.py", "checks/final-core.sh", "checks/focused-core.sh",
+    "bootstrap/install.sh", "bootstrap/sync.py", "checks/final-core.sh", "checks/final-runtime.sh",
+    "checks/focused-core.sh", "checks/focused-runtime.sh", "checks/hash_opencode.py",
     "checks/review_budget.py", "checks/test_sync.py", "config/manifest.json",
-    "config/pi/mcp.user.json", "config/pi/settings.user.json"
+    "config/pi/mcp.user.json", "config/pi/models.user.json", "config/pi/settings.user.json"
   ],
   "baseline": {
     "scope": "~/.config/opencode",
