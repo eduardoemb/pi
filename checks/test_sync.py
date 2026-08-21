@@ -47,6 +47,14 @@ class SyncTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.merge({"mcpServers": {"context7": {"command": "other"}}}, desired, "mcp")
 
+    def test_preserves_existing_providers_and_updates_declared_model_provider(self):
+        desired = {"providers": {"cliproxy": {"baseUrl": "http://127.0.0.1:8317/v1"}}}
+        result = self.merge({"providers": {"openai": {"api": "openai-completions"}}}, desired, "models")
+        self.assertIn("openai", result["providers"])
+        self.assertEqual(result["providers"]["cliproxy"], desired["providers"]["cliproxy"])
+        result = self.merge({"providers": {"cliproxy": {"baseUrl": "http://other"}}}, desired, "models")
+        self.assertEqual(result["providers"]["cliproxy"], desired["providers"]["cliproxy"])
+
     def test_threat_guards_reject_unsafe_inputs(self):
         self.assertFalse(allowed_path("README.sh"))
         self.assertFalse(allowed_path("requirements.txt"))

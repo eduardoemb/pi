@@ -2,7 +2,7 @@
   "version": 1,
   "ownership": {
     "package": ["generated Pi assets", "mcpServers.engram"],
-    "user": ["defaultProvider", "defaultModel", "defaultProjectTrust", "enableInstallTelemetry", "five declared MCP entries"]
+    "user": ["defaultProvider", "defaultModel", "defaultProjectTrust", "enableInstallTelemetry", "five declared MCP entries", "declared models.json providers"]
   },
   "allowlist": [
     ".gitignore", ".github/PULL_REQUEST_TEMPLATE.md", ".github/workflows/validate.yml",

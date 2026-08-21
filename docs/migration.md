@@ -19,13 +19,32 @@ Configuration is merged by key, never replaced whole-file. `settings.json`:
 package owns generated entries; user owns provider, model, project trust, and
 telemetry (trust never in a project-level `.pi/settings.json`). `mcp.json`:
 package owns the Engram entry; user owns the other five servers (six total).
-`bootstrap/sync.py` merges by key and rejects conflicts and whole-file
-replacement; `config/manifest.json` records the split.
+`models.json` uses the same provider-key merge: the repository declares custom
+providers in `config/pi/models.user.json`, while existing providers are
+preserved. `bootstrap/sync.py` merges by key and rejects conflicts and
+whole-file replacement; `config/manifest.json` records the split.
 
 ## Privacy
 
 MCP servers declare `credentialRef: env:NAME` references only; credential
 values come from the environment and are never stored or committed.
+
+Custom model providers can resolve `apiKey` at request time with a Pi command
+reference. The CLIProxyAPI configuration uses the macOS Keychain service
+`pi-cliproxy-api-key` for the current user. The declarative file contains only
+the Keychain lookup command, never the credential value.
+
+## CLIProxyAPI OpenCode Go model catalog
+
+The `cliproxy` provider is a declarative snapshot of the active OpenCode Go
+catalog. Its allowlist includes only model IDs currently present in both the
+direct Go catalog and the CLIProxyAPI unified catalog with
+`owned_by=opencode-go`. Models owned by `opencode` belong to OpenCode Zen and
+are excluded.
+
+The upstream catalog does not provide an active-status field. Refresh this
+snapshot through a controlled review when the catalog changes, then apply it
+with `bootstrap/sync.py models config/pi/models.user.json ~/.pi/agent/models.json`.
 
 ## Baseline contract
 

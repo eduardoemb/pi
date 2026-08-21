@@ -15,14 +15,14 @@ def merge_file(path, desired, kind):
     target = load(path)
     if not isinstance(target, dict) or not isinstance(desired, dict):
         raise ValueError("configuration must be an object")
-    if kind == "mcp":
-        key = "mcpServers"
+    if kind in ("mcp", "models"):
+        key = "mcpServers" if kind == "mcp" else "providers"
         current = target.setdefault(key, {})
         incoming = desired.get(key, {})
         if not isinstance(current, dict) or not isinstance(incoming, dict):
-            raise ValueError("mcpServers must be an object")
+            raise ValueError(f"{key} must be an object")
         for name, value in incoming.items():
-            if name in current and current[name] != value:
+            if kind != "models" and name in current and current[name] != value:
                 raise ValueError(f"conflict for {name}")
             current[name] = value
     else:
@@ -47,7 +47,7 @@ def merge_file(path, desired, kind):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("kind", choices=("settings", "mcp"))
+    parser.add_argument("kind", choices=("settings", "mcp", "models"))
     parser.add_argument("source", type=Path)
     parser.add_argument("target", type=Path)
     args = parser.parse_args()

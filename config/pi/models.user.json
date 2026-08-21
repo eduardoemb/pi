@@ -1,3 +1,42 @@
 {
-  "models": {}
+  "providers": {
+    "cliproxy": {
+      "baseUrl": "http://127.0.0.1:8317/v1",
+      "api": "openai-completions",
+      "apiKey": "!security find-generic-password -a \"$USER\" -s \"pi-cliproxy-api-key\" -w",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        { "id": "deepseek-v4-flash" },
+        { "id": "glm-5.1" },
+        { "id": "hy3-preview" },
+        { "id": "mimo-v2.5" },
+        { "id": "kimi-k2.6" },
+        { "id": "mimo-v2-omni" },
+        { "id": "minimax-m2.5" },
+        { "id": "qwen3.6-plus" },
+        { "id": "qwen3.7-plus" },
+        { "id": "qwen3.8-max" },
+        { "id": "gpt-5.6-luna" },
+        { "id": "kimi-k2.5" },
+        { "id": "mimo-v2-pro" },
+        { "id": "mimo-v2.5-pro" },
+        { "id": "grok-4.5" },
+        { "id": "kimi-k2.7-code" },
+        { "id": "minimax-m2.7" },
+        { "id": "muse-spark-1.2-contributor" },
+        { "id": "glm-5" },
+        { "id": "deepseek-v4-pro" },
+        { "id": "glm-5.2" },
+        { "id": "glm-5.3" },
+        { "id": "minimax-m3" },
+        { "id": "qwen3.7-max" },
+        { "id": "hy3" },
+        { "id": "kimi-k3" },
+        { "id": "qwen3.5-plus" }
+      ]
+    }
+  }
 }
