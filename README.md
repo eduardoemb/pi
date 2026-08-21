@@ -29,9 +29,10 @@ sh bootstrap/install.sh --contract
 ## Ownership
 
 Merge by key ownership: package owns generated assets and the Engram MCP
-entry; user owns model/provider, project trust, telemetry, and five declared
-MCP entries. `bootstrap/sync.py` merges only declared user keys and rejects
-whole-file replacement. See `config/manifest.json`.
+entry; user owns model/provider, project trust, telemetry, five declared MCP
+entries, per-agent `model_profiles`, and the per-profile SDD agent files.
+`bootstrap/sync.py` merges only declared user keys, copies declarative agent
+files, and rejects whole-file replacement. See `config/manifest.json`.
 
 ## Privacy
 

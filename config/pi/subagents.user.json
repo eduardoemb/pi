@@ -1,0 +1,247 @@
+{
+  "model_profiles": {
+    "gentle-ai-explore": {
+      "model": "cliproxy/minimax-m3"
+    },
+    "gentle-ai-verify": {
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "gentle-ai-worker": {
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "jd-fix-agent": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "jd-fix-agent-high": {
+      "model": "cliproxy/kimi-k2.7-code"
+    },
+    "jd-fix-agent-muse-deepseek": {
+      "effort": "max",
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "jd-fix-agent-openai": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "jd-judge-a": {
+      "effort": "xhigh",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "jd-judge-a-high": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "jd-judge-a-muse-deepseek": {
+      "effort": "xhigh",
+      "model": "cliproxy/muse-spark-1.2-contributor"
+    },
+    "jd-judge-a-openai": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "jd-judge-b": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "jd-judge-b-high": {
+      "effort": "xhigh",
+      "model": "cliproxy/muse-spark-1.2-contributor"
+    },
+    "jd-judge-b-muse-deepseek": {
+      "effort": "max",
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "jd-judge-b-openai": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "review-readability": {
+      "effort": "high",
+      "model": "cliproxy/muse-spark-1.2-contributor"
+    },
+    "review-reliability": {
+      "effort": "high",
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "review-resilience": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "review-risk": {
+      "effort": "xhigh",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-apply": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-apply-high": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-apply-muse-deepseek": {
+      "effort": "max",
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "sdd-apply-openai": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-archive": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-archive-high": {
+      "model": "cliproxy/mimo-v2.5"
+    },
+    "sdd-archive-muse-deepseek": {
+      "effort": "low",
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "sdd-archive-openai": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-luna"
+    },
+    "sdd-design": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-design-high": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "sdd-design-muse-deepseek": {
+      "effort": "xhigh",
+      "model": "cliproxy/muse-spark-1.2-contributor"
+    },
+    "sdd-design-openai": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "sdd-explore": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-explore-high": {
+      "model": "cliproxy/minimax-m3"
+    },
+    "sdd-explore-muse-deepseek": {
+      "effort": "high",
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "sdd-explore-openai": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-init": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-init-high": {
+      "model": "openai/gpt-5.6-luna"
+    },
+    "sdd-init-muse-deepseek": {
+      "effort": "medium",
+      "model": "cliproxy/muse-spark-1.2-contributor"
+    },
+    "sdd-init-openai": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-luna"
+    },
+    "sdd-onboard": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-onboard-high": {
+      "model": "cliproxy/minimax-m3"
+    },
+    "sdd-onboard-muse-deepseek": {
+      "effort": "medium",
+      "model": "cliproxy/muse-spark-1.2-contributor"
+    },
+    "sdd-onboard-openai": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-luna"
+    },
+    "sdd-proposal": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-proposal-high": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "sdd-proposal-muse-deepseek": {
+      "effort": "high",
+      "model": "cliproxy/muse-spark-1.2-contributor"
+    },
+    "sdd-proposal-openai": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "sdd-spec": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-spec-high": {
+      "effort": "high",
+      "model": "cliproxy/muse-spark-1.2-contributor"
+    },
+    "sdd-spec-muse-deepseek": {
+      "effort": "high",
+      "model": "cliproxy/muse-spark-1.2-contributor"
+    },
+    "sdd-spec-openai": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-status": {
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-sync": {
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-sync-high": {
+      "model": "cliproxy/mimo-v2.5"
+    },
+    "sdd-sync-muse-deepseek": {
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "sdd-sync-openai": {
+      "model": "openai/gpt-5.6-luna"
+    },
+    "sdd-tasks": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-tasks-high": {
+      "effort": "high",
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "sdd-tasks-muse-deepseek": {
+      "effort": "high",
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "sdd-tasks-openai": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-verify": {
+      "effort": "medium",
+      "model": "openai/gpt-5.6-terra"
+    },
+    "sdd-verify-high": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-sol"
+    },
+    "sdd-verify-muse-deepseek": {
+      "effort": "max",
+      "model": "cliproxy/deepseek-v4-flash"
+    },
+    "sdd-verify-openai": {
+      "effort": "high",
+      "model": "openai/gpt-5.6-sol"
+    }
+  }
+}

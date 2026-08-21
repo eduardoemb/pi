@@ -15,9 +15,12 @@ This file tells agents and maintainers how to operate on this repository.
 
 ## Ownership
 
-- Merge `~/.pi/agent/settings.json` and `~/.pi/agent/mcp.json` by key only via
-  `bootstrap/sync.py`; preserve package-owned entries; never replace whole
-  files.
+- Merge `~/.pi/agent/settings.json`, `~/.pi/agent/mcp.json`, and
+  `~/.pi/agent/subagents.json` by key only via `bootstrap/sync.py`; preserve
+  package-owned entries; never replace whole files.
+- Copy declarative per-profile agent definitions from `config/pi/agents/` with
+  `bootstrap/sync.py agents`; the sync never removes or overwrites package-owned
+  agent files at the target.
 - Apply `config/pi/*.user.json` declaratives; never hand-edit
   package-managed paths.
 - Keep the publish allowlist in `config/manifest.json` accurate.

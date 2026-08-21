@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-from bootstrap.sync import merge_file
+from bootstrap.sync import merge_file, sync_agents
 from checks.review_budget import allowed_path, canonical_root, expected_remote, expected_refspec, pr_target
 
 
@@ -55,10 +55,38 @@ class SyncTests(unittest.TestCase):
         result = self.merge({"providers": {"cliproxy": {"baseUrl": "http://other"}}}, desired, "models")
         self.assertEqual(result["providers"]["cliproxy"], desired["providers"]["cliproxy"])
 
+    def test_subagents_merge_preserves_package_agents_and_updates_declared_profiles(self):
+        desired = {"model_profiles": {
+            "sdd-design-high": {"model": "openai/gpt-5.6-sol", "effort": "medium"},
+            "jd-fix-agent-high": {"model": "cliproxy/kimi-k2.7-code"},
+        }}
+        result = self.merge({"model_profiles": {"builtin-agent": {"model": "openai/gpt-5.6"}}}, desired, "subagents")
+        self.assertIn("builtin-agent", result["model_profiles"])
+        self.assertEqual(result["model_profiles"]["sdd-design-high"], desired["model_profiles"]["sdd-design-high"])
+        result = self.merge({"model_profiles": {"sdd-design-high": {"model": "other"}}}, desired, "subagents")
+        self.assertEqual(result["model_profiles"]["sdd-design-high"], desired["model_profiles"]["sdd-design-high"])
+
+    def test_sync_agents_copies_only_markdown_without_deleting_foreign_files(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "source"
+            target = Path(directory) / "target"
+            source.mkdir()
+            target.mkdir()
+            (source / "sdd-init-high.md").write_text("---\nname: sdd-init-high\n---")
+            (source / "notes.txt").write_text("not an agent")
+            (target / "package-owned.md").write_text("keep me")
+            sync_agents(source, target)
+            self.assertEqual((target / "sdd-init-high.md").read_text(), "---\nname: sdd-init-high\n---")
+            self.assertFalse((target / "notes.txt").exists())
+            self.assertEqual((target / "package-owned.md").read_text(), "keep me")
+
     def test_threat_guards_reject_unsafe_inputs(self):
         self.assertFalse(allowed_path("README.sh"))
         self.assertFalse(allowed_path("requirements.txt"))
         self.assertFalse(allowed_path("extra.bin"))
+        self.assertFalse(allowed_path("config/pi/agents/evil.txt"))
+        self.assertTrue(allowed_path("config/pi/agents/sdd-init-high.md", "pr3"))
+        self.assertTrue(allowed_path("config/pi/subagents.user.json", "pr3"))
         self.assertFalse(canonical_root("/tmp/other", "/tmp/repo"))
         self.assertFalse(expected_remote("https://github.com/eduardoemb/other.git"))
         self.assertFalse(expected_refspec("origin/main:main"))

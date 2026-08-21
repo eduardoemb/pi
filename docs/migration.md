@@ -24,6 +24,25 @@ providers in `config/pi/models.user.json`, while existing providers are
 preserved. `bootstrap/sync.py` merges by key and rejects conflicts and
 whole-file replacement; `config/manifest.json` records the split.
 
+Agent model routing mirrors the OpenCode multi-profile SDD setup: the
+repository declares per-agent `model_profiles` in
+`config/pi/subagents.user.json`, and the 42 per-profile agent definitions
+(suffixes `-high`, `-openai`, `-muse-deepseek`) live under `config/pi/agents/`.
+Apply them with:
+
+```sh
+python3 bootstrap/sync.py subagents config/pi/subagents.user.json ~/.pi/agent/subagents.json
+python3 bootstrap/sync.py agents config/pi/agents ~/.pi/agent/agents
+```
+
+`sync.py agents` only copies `.md` files and never deletes or overwrites
+package-owned agent files already installed at the target.
+
+Runtime routing always prefers `model_profiles` over the frontmatter `model:`
+fields in the agent files; the `.md` declarations are kept as a matching
+fallback. The per-agent editor view (`gentle-ai/models.json`) is derived by the
+modal and is not versioned here — only the runtime `subagents.json` shapes are.
+
 ## Privacy
 
 MCP servers declare `credentialRef: env:NAME` references only; credential

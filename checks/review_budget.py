@@ -18,11 +18,16 @@ UNITS = {
     "pr3": {
         "AGENTS.md", "README.md", "checks/final.sh", "checks/focused-operations.sh",
         "checks/review_budget.py", "config/manifest.json", "docs/migration.md",
+        "config/pi/subagents.user.json",
     },
 }
 
+_AGENT_PREFIXES = ("config/pi/agents/",)
+
 
 def allowed_path(path, unit="pr1"):
+    if any(path.startswith(prefix) for prefix in _AGENT_PREFIXES):
+        return path.lower().endswith(".md")
     return path in UNITS[unit] and not path.lower().endswith((".mdx", ".sh.md"))
 
 
