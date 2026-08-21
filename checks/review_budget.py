@@ -15,6 +15,10 @@ UNITS = {
         "checks/hash_opencode.py", "checks/review_budget.py", "config/manifest.json",
         "config/pi/models.user.json", "config/pi/settings.user.json",
     },
+    "pr3": {
+        "AGENTS.md", "README.md", "checks/final.sh", "checks/focused-operations.sh",
+        "checks/review_budget.py", "config/manifest.json", "docs/migration.md",
+    },
 }
 
 
@@ -44,7 +48,7 @@ def run(*args):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--unit", required=True, choices=("pr1", "pr2"))
+    parser.add_argument("--unit", required=True, choices=("pr1", "pr2", "pr3"))
     parser.add_argument("--max", type=int, default=400)
     args = parser.parse_args()
     root = run("git", "rev-parse", "--show-toplevel")[0]
