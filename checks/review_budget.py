@@ -9,6 +9,7 @@ UNITS = {
         "bootstrap/install.sh", "bootstrap/sync.py", "checks/final-core.sh", "checks/focused-core.sh",
         "checks/review_budget.py", "checks/test_sync.py", "config/manifest.json",
         "config/pi/mcp.user.json", "config/pi/settings.user.json",
+        "config/pi/runtime-guardrails.user.json",
     },
     "pr2": {
         "bootstrap/install.sh", "checks/final-runtime.sh", "checks/focused-runtime.sh",

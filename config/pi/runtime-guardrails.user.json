@@ -1,0 +1,10 @@
+{
+  "autonomousMode": true,
+  "guardedCommands": {
+    "gitPush": "allow",
+    "gitRebase": "allow",
+    "gitBranchDeleteForce": "allow",
+    "npmPublish": "block",
+    "piRemove": "confirm"
+  }
+}
